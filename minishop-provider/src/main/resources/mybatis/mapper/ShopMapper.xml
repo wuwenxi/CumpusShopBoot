@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.minishopprovider.dao.ShopMapper">
+
+    <resultMap id="MyType" type="com.wwx.minishop.entity.Shop">
+        <id property="shopId" column="shop_id"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="shopDesc" column="shop_desc"/>
+        <result property="shopImg" column="shop_img"/>
+        <result property="shopAddress" column="shop_address"/>
+        <result column="phone" property="phone"/>
+        <result property="priority" column="priority"/>
+        <result property="enableStatus" column="enable_status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="lastEditTime" column="last_edit_time"/>
+        <result property="advice" column="advice"/>
+        <association property="shopCategory" javaType="com.wwx.minishop.entity.ShopCategory">
+            <id property="shopCategoryId" column="shop_category_id"/>
+            <result property="shopCategoryName" column="shop_category_name"/>
+        </association>
+        <association property="owner" javaType="com.wwx.minishop.entity.PersonInfo">
+            <id property="userId" column="user_id"/>
+            <result property="name" column="name"/>
+        </association>
+        <association property="area" javaType="com.wwx.minishop.entity.Area">
+            <id property="areaId" column="area_id"/>
+            <result property="areaName" column="area_name"/>
+        </association>
+    </resultMap>
+
+    <select id="queryShopByName" resultType="com.wwx.minishop.entity.Shop">
+        select s.shop_id,s.shop_name,s.shop_desc,s.shop_img,s.priority,s.shop_address,
+        s.phone,s.create_time,s.last_edit_time,s.enable_status,s.advice,
+        a.area_id,a.area_name,
+        sc.shop_category_id,sc.shop_category_name
+        from tb_shop s
+        left join tb_shop_category sc on s.shop_category_id = sc.shop_category_id
+        left join tb_area a on s.area_id = a.area_id
+        where
+        s.shop_name = #{shopName}
+    </select>
+
+    <select id="selectShopList" resultType="com.wwx.minishop.entity.Shop">
+        select s.shop_id,s.shop_name,s.shop_desc,s.shop_img,s.priority,s.shop_address,
+        s.phone,s.create_time,s.last_edit_time,s.enable_status,s.advice,
+        sc.shop_category_id,sc.shop_category_name
+        from tb_shop s
+        left join tb_shop_category sc on s.shop_category_id = sc.shop_category_id
+        <where>
+            <if test="shop.shopCategory!=null
+            and shop.shopCategory.shopCategoryId != null">
+                and s.shop_category_id=#{shop.shopCategory.shopCategoryId}
+            </if>
+            <!--取出一级类别下的所有子类别-->
+            <if test="shop.shopCategory != null
+            and shop.shopCategory.parent != null
+            and shop.shopCategory.parent.shopCategoryId != null">
+                and s.shop_category_id in (select shop_category_id
+                from tb_shop
+                where
+                parent_id = #{shop.shopCategory.parent.shopCategoryId})
+            </if>
+            <if test="shop.owner!=null and shop.owner.userId != null">
+                and s.owner_id = #{shop.owner.userId}
+            </if>
+            <if test="shop.enableStatus!=null">
+                and s.enable_status=#{shop.enableStatus}
+            </if>
+            <if test="shop.shopName!=null">
+                and s.shop_name like '%${shop.shopName}%'
+            </if>
+        </where>
+        /* 按照店铺状态排序*/
+        order by s.enable_status desc
+        limit #{rowIndex},#{pageSize}
+    </select>
+
+    <select id="queryShopList" resultMap="MyType">
+        select s.shop_id,s.shop_name,s.shop_desc,s.shop_img,s.priority,s.shop_address,
+        s.phone,s.create_time,s.last_edit_time,s.enable_status,s.advice,
+        a.area_id,a.area_name,
+        sc.shop_category_id,sc.shop_category_name
+        from tb_shop s
+        left join tb_shop_category sc on s.shop_category_id = sc.shop_category_id
+        left join tb_area a on s.area_id = a.area_id
+    </select>
+
+    <select id="queryShopById" resultMap="MyType">
+        select s.shop_id,s.shop_name,s.shop_desc,s.shop_img,s.priority,s.shop_address,
+        s.phone,s.create_time,s.last_edit_time,s.enable_status,s.advice,
+        a.area_id,a.area_name,
+        sc.shop_category_id,sc.shop_category_name
+        from tb_shop s
+        left join tb_shop_category sc on s.shop_category_id = sc.shop_category_id
+        left join tb_area a on s.area_id = a.area_id
+        where
+        s.shop_id = #{shopId}
+    </select>
+
+    <select id="queryShopsByShopCategoryId" resultMap="MyType">
+        select s.shop_id,s.shop_name,s.shop_desc,s.shop_img,s.priority,s.shop_address,
+        s.phone,s.create_time,s.last_edit_time,s.enable_status,s.advice,
+        a.area_id,a.area_name,
+        sc.shop_category_id,sc.shop_category_name
+        from tb_shop s
+        left join tb_shop_category sc on s.shop_category_id = sc.shop_category_id
+        left join tb_area a on s.area_id = a.area_id
+        where
+        /* 筛选状态已审核过的店铺  并且按照状态排序*/
+        s.shop_category_id = #{shopCategory.shopCategoryId} and s.enable_status > 0
+        order by
+        s.enable_status desc
+    </select>
+
+    <insert id="insertShop" useGeneratedKeys="true" keyColumn="shop_id" keyProperty="shopId">
+        insert into
+        tb_shop(shop_id,owner_id,shop_category_id,shop_name,shop_desc,
+        shop_address,phone,shop_img,priority,create_time,
+        last_edit_time,enable_status,advice,area_id)
+        values
+        (#{shopId},#{owner.userId},#{shopCategory.shopCategoryId},#{shopName},
+        #{shopDesc},#{shopAddress},#{phone},#{shopImg},#{priority},#{createTime},
+        #{lastEditTime},#{enableStatus},#{advice},#{area.areaId})
+    </insert>
+
+    <update id="updateShop" parameterType="com.wwx.minishop.entity.Shop">
+        update tb_shop
+        <set>
+            <if test="shopCategory!=null">shop_category_id=#{shopCategory.shopCategoryId},</if>
+            <if test="shopName!=null">shop_name=#{shopName},</if>
+            <if test="shopDesc!=null">shop_desc=#{shopDesc},</if>
+            <if test="shopAddress!=null">shop_address=#{shopAddress},</if>
+            <if test="phone!=null">phone=#{phone},</if>
+            <if test="shopImg!=null">shop_img=#{shopImg},</if>
+            <if test="priority!=null">priority=#{priority},</if>
+            <if test="lastEditTime!=null">last_edit_time=#{lastEditTime},</if>
+            <if test="enableStatus!=null">enable_status=#{enableStatus},</if>
+            <if test="advice!=null">advice=#{advice}</if>
+            <if test="areaId!=null">area_id=#{area.areaId}</if>
+        </set>
+        where shop_id=#{shopId}
+    </update>
+
+</mapper>

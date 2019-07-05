@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.minishopprovider.dao.ShopCategoryMapper">
+    <resultMap id="shopCategoryType" type="com.wwx.minishop.entity.ShopCategory">
+        <id property="shopCategoryId" column="shop_category_id"/>
+        <result property="shopCategoryName" column="shop_category_name"/>
+        <result property="shopCategoryDesc" column="shop_category_desc"/>
+        <result property="priority" column="priority"/>
+        <result property="createTime" column="create_time"/>
+        <result property="lastEditTime" column="last_edit_time"/>
+        <association property="parent" javaType="com.wwx.minishop.entity.ShopCategory">
+            <id property="shopCategoryId" column="parent_id"/>
+        </association>
+    </resultMap>
+
+    <select id="queryForListShopCategory" resultMap="shopCategoryType">
+        select shop_category_id,
+        shop_category_name,shop_category_desc,
+        priority, create_time,last_edit_time,parent_id
+        from tb_shop_category
+        <where>
+            <!--二级类别选取    当传入的类别不为空，且parent_id也不为空，则查找不为空的数据
+                              若传入的类别为空，则全部查找-->
+            <if test="shopCategory == null">
+                and parent_id is null
+            </if>
+            <if test="shopCategory != null">
+                and parent_id is not null
+            </if>
+            <if test="shopCategory != null and shopCategory.parent != null">
+                and parent_id = #{shopCategory.parent.shopCategoryId}
+            </if>
+        </where>
+        order by
+        priority desc
+    </select>
+
+    <select id="queryShopCategory" resultMap="shopCategoryType">
+        select shop_category_id,
+        shop_category_name,shop_category_desc,
+        priority, create_time,last_edit_time,parent_id
+        from tb_shop_category
+        where shop_category_id = #{shopCategoryId}
+        order by
+        priority desc
+    </select>
+
+</mapper>

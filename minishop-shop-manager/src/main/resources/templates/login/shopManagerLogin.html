@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MiniShop商家登录系统</title>
+    <link rel="icon" type="image/ico" th:href="@{/image/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/boostrap/bootstrap.min.css}"/>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <div th:replace="commons/commons::modal"></div>
+
+    <div class="container">
+        <div class="form row">
+            <form th:action="@{/shopManagerLogin}" th:method="post">
+                <div class="form-horizontal">
+                    <h1 class="form-title">MiniShop商家登录系统</h1>
+                </div>
+                <div class="form-horizontal col-md-offset-3" id="login_form">
+                    <h3 class="form-title">LOGIN</h3>
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <i class="fa fa-user fa-lg"></i>
+                            <input class="form-control required" type="text" placeholder="用户名" id="username" name="username" autofocus="autofocus" maxlength="20"/>
+                        </div>
+                        <div class="form-group">
+                            <i class="fa fa-lock fa-lg"></i>
+                            <input class="form-control required" type="password" placeholder="密码" id="password" name="password" maxlength="8"/>
+                        </div>
+                        <div class="form-group col-md-offset-2">
+                            <label>
+                                <input type="checkbox" name="remember-me">
+                            </label>记住账号
+                        </div>
+                        <div class="form-group col-md-offset-9">
+                            <input type="submit" class="btn btn-success pull-right" name="submit" id="submit" value="登录">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/js/jquery/jquery-1.11.3.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/boostrap/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/commons/common.js}"></script>
+    <script>
+        var error = getQueryString("error");
+        if(error){
+            $("#modal_hint").text("登录失败！用户名或密码错误！");
+            $("#modal").modal({
+                backdrop:'static'
+            });
+            $("#message_dismiss").click(function () {
+                window.location.href = "/shopManagerLogin";
+            })
+        }
+    </script>
+</body>
+</html>

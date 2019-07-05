@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.minishoppersonservice.dao.PersonInfoMapper">
+    <select id="queryPersonInfoWithName" resultType="com.wwx.minishop.entity.PersonInfo">
+        select *
+        from tb_person_info
+        where
+        username = #{name}
+    </select>
+
+    <select id="queryPersonInfoWithUserId" resultType="com.wwx.minishop.entity.PersonInfo">
+        select *
+        from tb_person_info
+        where
+        user_id = #{userId};
+    </select>
+
+    <insert id="insertPersonInfo" useGeneratedKeys="true" keyColumn="user_id" keyProperty="userId">
+        insert into
+        tb_person_info(name,gender,email,profile_img,user_type,create_time,
+        last_edit_time,enable_status,username,password,phone)
+         values
+         (#{name},#{gender},#{email},#{profileImg},#{userType},#{createTime},#{lastEditTime}
+         ,#{enableStatus},#{userName},#{password},#{phone});
+    </insert>
+
+    <update id="updatePersonInfo" parameterType="com.wwx.minishop.entity.PersonInfo">
+        update tb_person_info
+        <set>
+            <if test="name!=null">name=#{name},</if>
+            <if test="gender!=null">gender=#{gender},</if>
+            <if test="email!=null">email=#{email},</if>
+            <if test="profileImg!=null">profile_img=#{profileImg},</if>
+            <if test="userType!=null">user_type=#{userType},</if>
+            <if test="lastEditTime!=null">last_edit_time=#{lastEditTime},</if>
+            <if test="enableStatus!=null">enable_status=#{enableStatus},</if>
+            <if test="userName!=null">username=#{userName},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="phone!=null">phone=#{phone}</if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+</mapper>

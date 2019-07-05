@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: mminishop-shop-manager
+  datasource:
+    url: jdbc:mysql:///minishop?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  ## 配置activemq
+  activemq:
+    #broker-url: tcp://192.168.1.247:61616
+    user: admin
+    password: admin
+    pool:
+      enabled: true
+      max-connections: 20
+    #开启对象传输白名单
+    packages:
+      trust-all: true
+    broker-url: tcp://192.168.0.103:61616
+
+eureka:
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: 8090

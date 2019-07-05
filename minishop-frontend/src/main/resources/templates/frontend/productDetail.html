@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MiniShop</title>
+    <link rel="icon" type="image/ico" th:href="@{/image/favicon.ico}">
+
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/minishop/minishop.css}"/>
+    <link rel="stylesheet" th:href="@{/css/minishop/shopdetail.css}">
+</head>
+<body>
+    <div th:replace="commons/commons::modal"></div>
+
+    <div th:replace="commons/commons::delete"></div>
+
+    <div th:replace="frontend/bar::head_top"></div>
+
+    <!--搜索栏-->
+    <div th:replace="frontend/bar::head_search"></div>
+
+    <!--导航栏-->
+    <div th:replace="frontend/bar::navigation"></div>
+
+    <div class="container">
+        <div style="margin-top: 20px;margin-bottom: 10px" class="product-title">
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail product-img" style="width: 80%;">
+                </div>
+            </div>
+            <div class="col-md-4 shop-detail">
+            </div>
+        </div>
+        <div class="product-imgs" style="width: 80%">
+        </div>
+    </div>
+    <div class="container">
+        <button type="button" class="btn btn-primary user-buy">立即购买</button>
+    </div>
+
+    <!--底部栏-->
+    <div>
+        <span><img th:src="@{/image/kongbaitiao.png}" style="margin-top: 25px;"/></span>
+    </div>
+
+    <div th:replace="frontend/bar::service"></div>
+
+    <div>
+        <span><img th:src="@{/image/kongbaitiao.png}" style="margin-top: 25px;"/></span>
+    </div>
+
+    <div th:replace="frontend/bar::footArea"></div>
+
+    <script th:src="@{/js/jquery/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/js/boostrap/bootstrap.min.js}"></script>
+    <script th:src="@{/js/commons/common.js}"></script>
+    <script th:src="@{/js/minishop/product_detail.js}"></script>
+    <script th:src="@{/js/minishop/commons.js}"></script>
+
+    <script>
+        //启动轮播，设置轮播间隔4s
+
+    </script>
+</body>
+</html>

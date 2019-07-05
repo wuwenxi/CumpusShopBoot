@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="commons/bar::head_file">
+</head>
+<body>
+    <!--顶部栏-->
+    <div th:replace="commons/bar::topbar"></div>
+
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
+
+        <div class="main-container-inner">
+            <a class="menu-toggler" id="menu-toggler" href="#">
+                <span class="menu-text"></span>
+            </a>
+
+            <!--左侧菜单栏-->
+            <div th:replace="commons/bar::sidebar(activeUri='productList')"></div>
+
+            <!-- 主体页-->
+            <div class="main-content">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                    </script>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home home-icon"></i>
+                            <a href="#">首页</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="page-content">
+                    <div class="page-header">
+                        <ul class="breadcrumb">
+                            <li><a href="/shopAdmin/productlist"><h4>商品列表</h4></a></li>
+                            <li class="active">查看</li>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12" style="margin-top: 20px">
+                            <table class="table table-hover" id="product">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>商品名</th>
+                                        <th>商品描述</th>
+                                        <th>商品类别</th>
+                                        <th>所属店铺</th>
+                                        <th>商品状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--底部页栏-->
+                    <div class="row">
+                        <!--底部提示页码栏-->
+                        <div class="col-md-offset-1" id="page_info" style="font-size: 15px"></div>
+                        <div class="col-md-offset-6" id="page_nav"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="icon-double-angle-up icon-only bigger-110"></i>
+        </a>
+    </div>
+
+    <script th:src="@{/js/jquery/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/js/shopadmin/productList.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bar.js}"></script>
+
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>"+"<"+"script>");
+    </script>
+
+    <script type="text/javascript">
+        if("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
+    </script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+    <script th:src="@{/assets/js/typeahead-bs2.min.js}"></script>
+
+    <script th:src="@{/assets/js/ace.min.js}"></script>
+
+    <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+
+.shop-detail{
+	margin-left: 20px;
+}
+
+.shop-detail li{
+	text-decoration: none;
+	list-style: none;
+	font-family: "宋体";
+	font-size: 16px;
+	margin-top: 10px;
+	color: #d2434373;
+}
+
+.shop-title{
+	text-align: center;
+}
+
+.shop-title span{
+	font-size: 45px;
+	color: #d2434373;
+	font-family: "宋体";
+}
+
+.product-title{
+	text-align: center;
+}
+
+.product-title span{
+	font-size: 35px;
+	color: #d2434373;
+	font-family: "宋体";
+}
+
+.product-imgs img{
+	transition: all 0.6s;
+}
+
+.product-imgs img:hover{
+	transform: scale(1.5);
+}
+
+.user-buy{
+	margin-left: 80%;
+	margin-top: 5%;
+}

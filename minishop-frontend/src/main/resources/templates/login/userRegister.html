@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link rel="icon" type="image/ico" th:href="@{/image/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/boostrap/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/boostrap-fileinput/index.css}">
+</head>
+<body>
+    <div th:replace="commons/commons::modal"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal" enctype="multipart/form-data">
+                    <span class="heading">用户注册</span>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">用户名：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="userName" placeholder="用户名">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="form-group help">
+                        <label class="col-sm-3 control-label">密　码：</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="password" placeholder="密　码">
+                            <i class="fa fa-lock"></i>
+                            <a href="#" class="fa fa-question-circle"></a>
+                        </div>
+                    </div>
+                    <div class="form-group help">
+                        <label class="col-sm-3 control-label">真实姓名：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="name" placeholder="真实姓名">
+                            <i class="fa fa-lock"></i>
+                            <a href="#" class="fa fa-question-circle"></a>
+                        </div>
+                    </div>
+                    <div class="form-group help">
+                        <label class="col-sm-3 control-label">邮箱：</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="email" placeholder="邮箱">
+                            <i class="fa fa-lock"></i>
+                            <a href="#" class="fa fa-question-circle"></a>
+                        </div>
+                    </div>
+                    <div class="form-group help">
+                        <label class="col-sm-3 control-label">电话：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="phone" placeholder="电话">
+                            <i class="fa fa-lock"></i>
+                            <a href="#" class="fa fa-question-circle"></a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">性别：</label>
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                <input type="radio" name="gender" id="gender1_update_input" value="男" checked="checked"> 男
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="gender" id="gender2_update_input" value="女"> 女
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="userImg" class="col-sm-3 control-label">用户头像:</label>
+                        <div class="col-md-9">
+                            <div class="fileinput fileinput-new" data-provides="fileinput" id="uploadImageDiv">
+                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                    <img src="" alt="" />
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail"
+                                     style="max-width: 200px; max-height: 150px;"></div>
+                                <div>
+                                        <span class="btn btn-info btn-xs btn-file">
+                                            <span class="fileinput-new">选择图片</span>
+                                            <span class="fileinput-exists">更改</span>
+                                            <input type="file" class="form-control userImg" name="uploadImage" id="userImg"/>
+                                        </span>
+                                    <a href="#" class="btn btn-info btn-xs fileinput-exists" data-dismiss="fileinput">移除</a>
+                                </div>
+                            </div>
+                            <div id="titleImageError" style="color: #a94442"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default" id="submit">注册</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/jquery/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/js/boostrap/bootstrap.min.js}"></script>
+    <script th:src="@{/js/boostrap-fileinput/index.js}"></script>
+    <script type="text/javascript" th:src="@{/js/userRegister.js}"></script>
+</body>
+</html>

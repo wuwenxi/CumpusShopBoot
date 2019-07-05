@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.minishopusercollection.dao.UserCollectionMapper">
+    <resultMap id="UserCollectionType" type="com.wwx.minishop.entity.UserCollection">
+        <id column="user_collection_id" property="userCollectionId"/>
+        <result column="create_time" property="createTime"/>
+        <association property="personInfo" javaType="com.wwx.minishop.entity.PersonInfo">
+            <id column="user_id" property="userId"/>
+            <id column="user_name" property="userName"/>
+        </association>
+        <association property="shop" javaType="com.wwx.minishop.entity.Shop">
+            <id column="shop_id" property="shopId"/>
+            <result column="shop_name" property="shopName"/>
+        </association>
+    </resultMap>
+
+    <select id="queryUserCollectionList" resultMap="UserCollectionType">
+        select u.user_collection_id,u.person_info_id,u.shop_id,u.create_time,
+        p.user_id,p.user_name,
+        s.shop_id,s.shop_nam
+        from tb_user_collection u
+        left join tb_person_info p on u.person_info_id = p.user_id
+        left join tb_shop s om u.shop_id = s.shop_id
+        where
+        u.person_info_id = #{personInfo.userId}
+        order by
+        u.create_time desc
+    </select>
+
+    <select id="queryUserCollectionWithPersonAndShop" resultType="com.wwx.minishop.entity.UserCollection">
+        select *
+        from tb_user_collection
+        where
+        person_info_id = #{personInfo.userId} and shop_id = #{shop.shopId}
+    </select>
+
+    <insert id="insertUserCollection">
+        insert into
+        tb_user_collection (person_info_id,shop_id,create_time)
+        values (#{personInfo.userId},#{shop.shopId},#{createTime});
+    </insert>
+
+    <delete id="deleteUserCollection">
+        delete
+        from tb_user_collection
+        where
+        person_info_id = #{personInfo.userId} and shop_id = #{shop.shopId}
+    </delete>
+</mapper>

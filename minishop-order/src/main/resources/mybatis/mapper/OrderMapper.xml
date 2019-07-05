@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.minishoporder.dao.OrderMapper">
+    <resultMap id="orderType" type="com.wwx.minishop.entity.Order">
+        <id column="order_id" property="orderId"/>
+        <result column="order_number" property="orderNumber"/>
+        <result column="name" property="name"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+        <result column="create_time" property="createTime"/>
+        <result column="last_edit_time" property="lastEditTime"/>
+        <result column="enable_status" property="enableStatus"/>
+        <result column="product_count" property="productCount"/>
+        <association property="product" column="product_id" javaType="com.wwx.minishop.entity.Product">
+            <id column="product_id" property="productId"/>
+            <result column="product_name" property="productName"/>
+        </association>
+        <association property="shop" column="user_id" javaType="com.wwx.minishop.entity.Shop">
+            <id column="shop_id" property="shopId"/>
+            <result column="shop_name" property="shopName"/>
+        </association>
+    </resultMap>
+
+    <select id="queryOrderWithOrderNumber" resultType="orderType">
+        select o.order_id,o.order_number,o.name,o.phone,o.address,
+        o.create_time,o.last_edit_time,o.enable_status,o.product_id,o.shop_id,o.product_count,
+        p.product_id,p.product_name,
+        s.shop_id,s.shop_name
+        from tb_order o
+        left join tb_product p on o.product_id = p.product_id
+        left join tb_shop s on o.shop_id = s.shop_id
+        where
+        o.order_number = #{orderNumber}
+    </select>
+
+    <select id="queryOrderWithShopId" resultMap="orderType">
+        select o.order_id,o.order_number,o.name,o.phone,o.address,
+        o.create_time,o.last_edit_time,o.enable_status,o.product_id,o.shop_id,o.product_count,
+        p.product_id,p.product_name,
+        s.shop_id,s.shop_name
+        from tb_order o
+        left join tb_product p on o.product_id = p.product_id
+        left join tb_shop s on o.shop_id = s.shop_id
+        where
+        o.shop_id = #{shop.shopId}
+        order by o.create_time ASC
+    </select>
+
+    <insert id="insertOrder" useGeneratedKeys="true" parameterType="com.wwx.minishop.entity.Order">
+        insert into
+         tb_order(order_number,name,phone,address,create_time,
+          last_edit_time,enable_status,product_id,shop_id,product_count)
+         values (#{orderNumber},#{name},#{phone},#{address},#{createTime},
+         #{lastEditTime},#{enableStatus},#{product.productId},#{shop.shopId},#{productCount});
+    </insert>
+
+    <update id="updateOrder" parameterType="com.wwx.minishop.entity.Order">
+        update tb_order
+        <set>
+            <if test="orderNumber!=null">order_number=#{orderNumber},</if>
+            <if test="name!=null">name=#{name},</if>
+            <if test="phone!=null">phone=#{phone},</if>
+            <if test="address!=null">address=#{address},</if>
+            <if test="productCount!=null">product_count=#{productCount},</if>
+            <if test="createTime!=null">create_time=#{createTime},</if>
+            <if test="lastEditTime!=null">last_edit_time=#{lastEditTime},</if>
+            <if test="enableStatus!=null">enable_status=#{enableStatus},</if>
+            <if test="shop!=null and shop.shopId!=null">shop_id=#{shop.shopId},</if>
+            <if test="product!=null and product.productId">enable_status=#{product.productId},</if>
+        </set>
+        where order_id = #{orderId}
+    </update>
+
+</mapper>

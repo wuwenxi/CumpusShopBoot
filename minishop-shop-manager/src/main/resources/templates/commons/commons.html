@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+        <!--消息提示-->
+        <!-- Modal -->
+        <div th:fragment="modal" class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="message">通知</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="form-control-static" id="modal_hint" style="font-size: 16px"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="message_dismiss" class="btn btn-default" data-dismiss="modal" >关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:fragment="category" class="modal fade" id="category_update_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">商品类别更新</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="emp_form_id" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">类别编号:</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="category_id"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">商品类别:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="empEmail" class="form-control" id="category_name">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="category_update_save">更新</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div th:fragment="delete" class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="delete">提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="form-control-static" id="delete_hint"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="delete_dismiss">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

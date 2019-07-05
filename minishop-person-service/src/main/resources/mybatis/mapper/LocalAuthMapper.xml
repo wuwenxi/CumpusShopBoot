@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.minishoppersonservice.dao.LocalAuthMapper">
+    <resultMap id="localAuthType" type="com.wwx.minishop.entity.LocalAuth">
+        <id column="local_auth_id" property="localAuthId"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <association property="personInfo" column="user_id" javaType="com.wwx.minishop.entity.PersonInfo">
+            <id property="userId" column="user_id"/>
+            <!--商家管理系统显示用户真实姓名-->
+            <result property="name" column="name"/>
+            <result property="profileImg" column="profile_img"/>
+            <result property="gender" column="gender"/>
+            <result property="userType" column="user_type"/>
+        </association>
+    </resultMap>
+
+    <select id="queryLocalAuthWithName" resultMap="localAuthType">
+        select l.local_auth_id,l.user_name,l.password,l.user_id,
+        p.user_id,p.name,p.gender,p.profile_img,p.user_type
+        from tb_local_auth l
+        left join tb_person_info p on l.user_id = p.user_id
+        where
+        l.user_name = #{name}
+    </select>
+
+    <insert id="insertLocalAuth">
+        insert into
+        tb_local_auth (user_name,password,create_time,last_edit_time,user_id)
+        values (#{userName},#{password},#{createTime},#{lastEditTime},#{personInfo.userId});
+    </insert>
+
+</mapper>

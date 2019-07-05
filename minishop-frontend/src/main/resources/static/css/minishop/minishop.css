@@ -1,0 +1,237 @@
+
+*{
+	margin: 0px;
+	padding: 0px;
+	}
+.head{
+	width: auto;
+	height: 167px;
+	}
+
+/*顶部栏*/			
+.headerTop{
+	width: auto;
+	height: 40px;
+	background-color: #f7f7f7;
+	border-bottom: 1px solid #ccc;
+}
+			
+.headerTopLeft {
+	float: left;
+	margin-left:75%;	
+	color: #808080;
+}
+
+.personInfo{
+	margin-left:82%;
+}
+
+#userImg:hover{
+	text-decoration: none;
+}
+
+#logout .btn-default{
+	background-color: #f7f7f7;
+	border-color: #ffffff;
+	margin-left: 20px;
+	margin-top: 6px;
+}
+
+#logout .btn-xs{
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+#logout .btn-xs:hover{
+	background-color: #ffffff!important;
+	border-color: #ffffff;
+}
+
+.personInfo img{
+	width: 40px;
+}
+
+.personInfo span{
+	font-family: "宋体";
+	font-size: 13px;
+	line-height: 40px;
+}
+			
+.headerTopLeft span{
+	font-family: "宋体";
+	font-size: 13px;
+	line-height: 40px;
+	float: left;
+}
+
+.login{
+	font-size: 12px;
+	font-family: "宋体";
+	text-decoration: none;
+	color: #808080;
+}
+
+.login:hover{
+	color: red;
+}
+
+.register{
+	font-size: 12px;
+	font-family: "宋体";
+	text-decoration: none;
+	color: #808080;
+}
+
+.register:hover{
+	color: red;
+}
+
+/*热门搜索*/
+.hotword{
+	line-height: 40px;
+	font-size: 14px;
+	font-family: "宋体";
+	margin-left: 62%;
+	color: #808080;
+}
+
+.hotword a{
+	margin-left: 5px;
+	text-decoration: none;
+	color: #808080;
+}
+
+.hotword a:hover{
+	color: #727171;
+}
+
+/*导航栏颜色改变以及悬浮框*/
+
+.navbar-background{
+	background: #FFFFFF;
+}
+
+.navbar-brand{
+	padding: 0px;
+	line-height: 50px;
+}
+
+.navbar-nav li a{
+	padding-left:30px;
+	font-size: 15px;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	color: #c50000;
+}
+
+/*悬浮出现下拉框*/
+.nav > li:hover .dropdown-menu { display: block; }
+
+.nav-top{
+	width: 100%;
+}
+
+/*主体推荐*/
+h2{
+	text-align: center;
+    line-height: 50px;
+    margin: 15px 0px;
+    font-family: "Microsoft YaHei";
+    color: #9a9a9a;
+    font-size: 18px;
+}
+
+h4{
+	font-family: "Microsoft YaHei";
+    color: #5a5a5a;
+    font-size: 14px;
+}
+
+.caption p{
+	font-family: "Microsoft YaHei";
+    color: #a10000;
+    font-size: 12px;
+}
+
+.caption>.re{
+	margin-left: 60%;
+} 
+
+.caption a{
+	text-decoration: none;
+    color: #a10000;	
+    margin-left: 50%;
+}
+
+.average{
+	font-family: "Microsoft YaHei";
+    color: #a10000;
+    font-size: 14px;
+}
+
+.average span{
+	font-family: "微软雅黑";
+    color: #a10000;
+    font-size: 18px;
+} 
+
+/*底部栏*/
+.footBottomTab>li>a{
+	padding-left: 95px;
+}
+
+.footArea{
+	float: left;
+	width: 100%;
+    height: auto;
+    margin: 0px auto;
+    border-top: 1px solid #d8d7d7;
+    font-family: "宋体";
+    color: #333;
+   
+    text-align: center;
+}
+
+.service{
+    font-size: 20px;
+}
+
+.title>h3{
+	color: #666;
+	line-height: 25px;
+	font-size: 24px;
+}
+.share>a{
+	padding-left: 15px;
+	padding-top: 5px;
+	color: rgb(51, 51, 51);
+}
+
+.share>a:hover{
+	text-decoration: underline;
+	color: #686868;
+}
+
+.breadcrumb{
+	/*border-top: 1px solid #e2e2e2;*/
+	padding: 8px 130px;
+	margin-bottom: 20px;
+	list-style: none;
+	background: #ffffff;
+	border-radius: 4px;
+}
+
+.breadcrumb li h4{
+	font-size: 16px;
+}
+
+.shop-list a{
+	color: #000000;
+}
+
+.shop-list a:hover{
+	text-decoration: none;
+}
+
+

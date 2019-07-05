@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="frontend/bar::head_file">
+    <meta charset="UTF-8">
+    <title>MiniShop</title>
+    <link rel="icon" type="image/ico" th:href="@{/image/favicon.ico}">
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/minishop/minishop.css}"/>
+</head>
+
+<body>
+
+    <div th:replace="commons/commons::modal"></div>
+
+    <div th:replace="frontend/bar::head_top"></div>
+
+    <!--搜索栏-->
+    <div th:replace="frontend/bar::head_search"></div>
+
+    <!--导航栏-->
+    <div th:replace="frontend/bar::navigation"></div>
+
+   <div th:replace="frontend/bar::lunbo"></div>
+
+    <!--主体推荐部分-->
+    <div>
+                    <span>
+                    <img th:src="@{/image/kongbaitiao.png}"
+                         style="margin-top: 25px;"/>
+                    </span>
+    </div>
+    <div class="container">
+
+        <div class="like">
+            <h2>猜你喜欢</h2>
+            <!--缩略图-->
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <img th:src="@{/image/timg.jpg}" alt="">
+                        <div class="caption">
+                            <h4>星巴克咖啡</h4>
+                            <p>&nbsp;&nbsp;
+                                本店主要经营星巴克咖啡，这里不光有你喜欢的咖啡，更有各式各样的甜品，快来选购吧！</p>
+                            <a class="average">人均消费：
+                                <span>78￥</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="moods">
+            <h2>人气商家</h2>
+            <!--缩略图-->
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <img th:src="@{/image/timg.jpg}" alt="">
+                        <div class="caption">
+                            <h4>星巴克咖啡</h4>
+                            <p>&nbsp;&nbsp;
+                                本店主要经营星巴克咖啡，这里不光有你喜欢的咖啡，更有各式各样的甜品，快来选购吧！</p>
+                            <a class="average">人均消费：
+                                <span>78￥</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--推荐-->
+        <div class="recommend">
+            <h2>为你推荐</h2>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img th:src="@{/image/3.jpg}" alt="">
+                        <div class="caption">
+                            <h4>星巴克咖啡</h4>
+                            <p>&nbsp;&nbsp;
+                                本店主要经营星巴克咖啡，这里不光有你喜欢的咖啡，更有各式各样的甜品，快来选购吧！</p>
+                            <a class="average re">人均消费：
+                                <span>78￥</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--底部栏-->
+    <div>
+        <span><img th:src="@{/image/kongbaitiao.png}" style="margin-top: 25px;"/></span>
+    </div>
+
+    <div th:replace="frontend/bar::service"></div>
+
+    <div>
+        <span><img th:src="@{/image/kongbaitiao.png}" style="margin-top: 25px;"/></span>
+    </div>
+
+    <div th:replace="frontend/bar::footArea"></div>
+
+    <script type="text/javascript" th:src="@{/js/minishop/commons.js}"></script>
+
+    <script>
+        //启动轮播，设置轮播间隔4s
+        $(".carousel").carousel({
+            interval: 4000
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>欢迎回到MiniShop</title>
+    <link rel="icon" type="image/ico" th:href="@{/image/favicon.ico}">
+    <meta name="keywords" content="MiniShop" />
+    <meta name="description" content=" MiniShop" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/assets/css/font-awesome.min.css}" />
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+
+    <link rel="stylesheet" th:href="@{/assets/css/ace.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/ace-rtl.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/ace-skins.min.css}" />
+
+
+    <link rel="stylesheet" th:href="@{/assets/css/ace-ie.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/commons.css}">
+
+    <script th:src="@{/assets/js/ace-extra.min.js}"></script>
+    <script th:src="@{/assets/js/html5shiv.js}"></script>
+    <script th:src="@{/assets/js/respond.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/boostrap-fileinput/index.css}">
+</head>
+<body>
+
+<!--顶部栏-->
+<div th:replace="commons/bar::topbar"></div>
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+
+    <div th:replace="commons/commons::modal"></div>
+
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <!--左侧菜单栏-->
+        <div th:replace="commons/bar::sidebar(nav='edit',activeUri='addShop')"></div>
+
+        <!-- 主体页-->
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                </script>
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        <a href="#">首页</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="page-content">
+                <div class="page-header">
+                    <ul class="breadcrumb">
+                        <li><a href="/shopAdmin/addshop"><h4>新增店铺</h4></a></li>
+                        <li class="active">查看</li>
+                    </ul>
+                </div>
+                <div>
+                    <form class="form-horizontal col-md-6 col-md-offset-2" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="shopName" class="col-sm-2 control-label">店铺名称:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="shopName" placeholder="输入店铺名称"
+                                   style="max-width: 300px;">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shopDesc" class="col-sm-2 control-label">店铺描述:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="shopDesc" placeholder="描述你的店铺" rows="3" style="max-width: 300px"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label">联系方式:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="phone" placeholder="输入联系方式"
+                                   style="max-width: 300px;">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shopCategory" class="col-sm-2 control-label">店铺类别:</label>
+                        <div class="col-sm-10">
+                            <select id="select1">
+                                <option value="0">—— 类别 ——</option>
+                                <option value="1">美食饮品</option>
+                                <option value="2">二手市场</option>
+                                <option value="3">租赁市场</option>
+                                <option value="4">休闲娱乐</option>
+                                <option value="5">美容美发</option>
+                                <option value="6">培训教育</option>
+                                <option value="7">运动健身</option>
+                                <option value="8">其他</option>
+                            </select>
+                            <select class="form-group" id="shopCategory"
+                                    style="margin-left: 20px">
+                                <option value="0">—— 子类别 ——</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!--jQuery插件  更新全国省市区三级地址-->
+                        <label for="area" class="col-sm-2 control-label">店铺地址:</label>
+                        <div class="col-sm-10">
+                            <select id="area">
+                                <option value="0">—— 店铺地址 ——</option>
+                                <option value="1">芙蓉园</option>
+                                <option value="2">银杏园</option>
+                                <option value="3">珙桐园</option>
+                                <option value="4">松林园</option>
+                                <option value="5">香樟园</option>
+                                <option value="6">理工东苑</option>
+                                <option value="7">理工南苑</option>
+                                <option value="8">农贸市场</option>
+                                <option value="9">理工宾馆</option>
+                                <option value="10">后街</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shopAddress" class="col-sm-2 control-label">详细地址:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="shopAddress" placeholder="如：四川省成都市成华区二仙桥东三路1号成都理工大学" rows="3" style="max-width: 300px"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shopImg" class="col-sm-2 control-label">店铺图片:</label>
+                        <div class="col-md-10">
+                            <div class="fileinput fileinput-new" data-provides="fileinput" id="uploadImageDiv">
+                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                    <img src="" alt="" />
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail"
+                                     style="max-width: 200px; max-height: 150px;"></div>
+                                <div>
+                                        <span class="btn btn-info btn-xs btn-file">
+                                            <span class="fileinput-new">选择图片</span>
+                                            <span class="fileinput-exists">更改</span>
+                                            <input type="file" class="form-control shopImg" name="uploadImage" id="shopImg"/>
+                                        </span>
+                                    <a href="#" class="btn btn-info btn-xs fileinput-exists" data-dismiss="fileinput">移除</a>
+                                </div>
+                            </div>
+                            <div id="titleImageError" style="color: #a94442"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-8 col-md-10">
+                            <button type="button" class="btn btn-primary btn-sm" id="submit">提交</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+</div>
+
+
+    <script th:src="@{/js/jquery/jquery-1.11.3.min.js}"></script>
+
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+    <script th:src="@{/assets/js/typeahead-bs2.min.js}"></script>
+
+    <script th:src="@{/assets/js/ace.min.js}"></script>
+
+    <script th:src="@{/js/boostrap-fileinput/index.js}"></script>
+
+
+    <script th:src="@{/js/shopadmin/addShop.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bar.js}"></script>
+
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>"+"<"+"script>");
+    </script>
+
+    <script type="text/javascript">
+        if("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
+    </script>
+
+    <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>
+

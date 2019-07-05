@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/eureka-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/minishop-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/minishop-elasticsearch" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/minishop-elasticsearch" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/minishop-frontend" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/minishop-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/minishop-person-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/minishop-provider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/minishop-shop-manager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/minishop-user-collection" charset="UTF-8" />
+  </component>
+</project>

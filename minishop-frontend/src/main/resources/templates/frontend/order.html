@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MiniShop</title>
+    <link rel="icon" type="image/ico" th:href="@{/image/favicon.ico}">
+
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/minishop/minishop.css}"/>
+    <link rel="stylesheet" th:href="@{/css/minishop/shopdetail.css}">
+    <style>
+        .info{
+            font-size: 14px;padding-top: 20px;padding-left: 30px;
+        }
+        .user-pay{
+            float: right;
+            margin-right: 10%;
+            text-align: center;
+        }
+        .amount{
+            padding-left:30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div th:replace="commons/commons::modal"></div>
+
+    <div th:replace="commons/commons::delete"></div>
+
+    <div th:replace="frontend/bar::head_top"></div>
+
+    <div th:replace="commons/commons::order_modal"></div>
+
+    <div class="container">
+        <div style="margin-left: 10%;margin-top: 20px">
+            <img th:src="@{/image/logo2.png}"/>
+            <span style="margin-left: 60%;font-size: 14px">您好，欢迎光临minishop</span>
+        </div>
+        <div style="border-bottom: 1px solid #333333;"></div>
+        <div style="margin-top: 5px;font-size: 14px">
+            <span style="color: red;">温馨提示:<span style="color: black">在确认购买商品后，请填写完整的地址，收货人及电话</span></span>
+        </div>
+        <div class="row" style="margin-top: 20px">
+            <div class="col-xs-12">
+                <table class="table table-hover" id="pay">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="check_all"></th>
+                            <th>商品名</th>
+                            <th>单价(元)</th>
+                            <th>数量</th>
+                            <th>优惠(元)</th>
+                            <th>小计(元)</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div style="background: rgba(255,245,211,0.75)">
+                    <div class="info">
+                        <span style="padding-left: 40px">商品数量：<span id="count">0件</span></span>
+                    </div>
+                    <div class="pay" style="height: 60px;">
+                        <span class="amount">产生金额总计(包括配送费)：<span style="font-size: 24px;color: red">￥0</span></span>
+                        <button type="button" class="btn btn-primary btn-primary user-pay disabled">去结算</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--底部栏-->
+    <div>
+        <span><img th:src="@{/image/kongbaitiao.png}" style="margin-top: 25px;"/></span>
+    </div>
+
+    <div th:replace="frontend/bar::service"></div>
+
+    <div>
+        <span><img th:src="@{/image/kongbaitiao.png}" style="margin-top: 25px;"/></span>
+    </div>
+
+    <div th:replace="frontend/bar::footArea"></div>
+
+    <script th:src="@{/js/jquery/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/js/boostrap/bootstrap.min.js}"></script>
+    <script th:src="@{/js/commons/common.js}"></script>
+    <script th:src="@{/js/minishop/commons.js}"></script>
+    <script th:src="@{/js/minishop/order.js}"></script>
+
+</body>
+</html>

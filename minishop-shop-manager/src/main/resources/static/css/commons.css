@@ -1,0 +1,18 @@
+.btn-default{
+    background-color: #ffffff!important;
+    border-color: #ffffff;
+}
+
+.mybtn{
+    color: #333!important;
+}
+
+.btn-xs{
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.btn-xs:hover{
+    background-color: #ffffff!important;
+    border-color: #ffffff;
+}

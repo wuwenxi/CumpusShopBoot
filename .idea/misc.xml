@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/eureka-service/pom.xml" />
+        <option value="$PROJECT_DIR$/minishop-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/minisho-papi/pom.xml" />
+        <option value="$PROJECT_DIR$/minishop-api/pom.xml" />
+        <option value="$PROJECT_DIR$/minishop-frontend/pom.xml" />
+        <option value="$PROJECT_DIR$/minishop-shop-manager/pom.xml" />
+        <option value="$PROJECT_DIR$/minishop-person-service/pom.xml" />
+        <option value="$PROJECT_DIR$/minishop-order/pom.xml" />
+        <option value="$PROJECT_DIR$/minishop-user-collection/pom.xml" />
+        <option value="$PROJECT_DIR$/minishop-elasticsearch/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8 (1)" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

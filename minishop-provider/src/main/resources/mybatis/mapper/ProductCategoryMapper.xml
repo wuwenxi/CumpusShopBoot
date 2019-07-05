@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.minishopprovider.dao.ProductCategoryMapper">
+    <resultMap id="MyType" type="com.wwx.minishop.entity.ProductCategory">
+        <id column="product_category_id" property="productCategoryId"/>
+        <result column="product_category_name" property="productCategoryName"/>
+        <result column="create_time" property="createTime"/>
+        <association property="shop" javaType="com.wwx.minishop.entity.Shop">
+            <id column="shop_id" property="shopId"/>
+            <result column="shop_name" property="shopName"/>
+        </association>
+    </resultMap>
+
+    <select id="queryProductCategoriesByShopId" resultMap="MyType">
+         select pc.product_category_id,pc.product_category_name,pc.priority,pc.create_time,pc.shop_id,
+         s.shop_id,s.shop_name
+         from
+         tb_product_category pc
+         left join tb_shop s on pc.shop_id = s.shop_id
+         where
+         pc.shop_id = #{shopId}
+         order by
+         priority desc
+    </select>
+
+    <select id="queryProductCategory" resultMap="MyType">
+        select pc.product_category_id,pc.product_category_name,pc.priority,pc.create_time,pc.shop_id,
+         s.shop_id,s.shop_name
+         from
+         tb_product_category pc
+         left join tb_shop s on pc.shop_id = s.shop_id
+         where
+         pc.product_category_id = #{productCategoryId}
+         order by
+         priority desc
+    </select>
+
+    <update id="updateProductCategory">
+        update tb_product_category
+        <set>
+            <if test="productCategoryName != null">
+                product_category_name = #{productCategoryName},
+            </if>
+            <if test="shop!=null and shop.shopId!=null">
+                shop_id = #{shop.shopId}
+            </if>
+        </set>
+        where
+        product_category_id = #{productCategoryId}
+    </update>
+
+    <insert id="insertProductCategory" useGeneratedKeys="true">
+        insert into
+        tb_product_category(product_category_name,priority,create_time,shop_id)
+        values
+        (#{productCategoryName},#{priority},#{createTime},#{shop.shopId})
+    </insert>
+
+    <delete id="productCategoryId">
+        delete * from tb_product_category where product_category_id = #{productCategoryId}
+    </delete>
+
+</mapper>

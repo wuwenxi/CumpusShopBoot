@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.minishopprovider.dao.ProductImgMapper">
+
+    <select id="queryProductImgsByProductId" resultType="com.wwx.minishop.entity.ProductImg">
+        select product_img_id,img_address,img_desc,priority,create_time,product_id
+        from
+        tb_product_img
+        where
+        product_id = #{productId}
+        order by
+        priority desc
+    </select>
+
+    <!--批量插入图片-->
+    <insert id="insertProductImgs" useGeneratedKeys="true" keyColumn="product_id" keyProperty="productId">
+        insert into
+        tb_product_img
+        (product_img_id,img_address,img_desc,priority,create_time,product_id)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+              #{item.productImgId},#{item.imgAddress},#{item.imgDesc},
+              #{item.priority},#{item.createTime},#{item.productId}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteByProductId">
+        delete * from tb_product_img where product_id = #{productId}
+    </delete>
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/eureka-service/eureka-service.iml" filepath="$PROJECT_DIR$/eureka-service/eureka-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minishop-api/minishop-api.iml" filepath="$PROJECT_DIR$/minishop-api/minishop-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minishop-elasticsearch/minishop-elasticsearch.iml" filepath="$PROJECT_DIR$/minishop-elasticsearch/minishop-elasticsearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minishop-frontend/minishop-frontend.iml" filepath="$PROJECT_DIR$/minishop-frontend/minishop-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minishop-order/minishop-order.iml" filepath="$PROJECT_DIR$/minishop-order/minishop-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minishop-person-service/minishop-person-service.iml" filepath="$PROJECT_DIR$/minishop-person-service/minishop-person-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minishop-provider/minishop-provider.iml" filepath="$PROJECT_DIR$/minishop-provider/minishop-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minishop-shop-manager/minishop-shop-manager.iml" filepath="$PROJECT_DIR$/minishop-shop-manager/minishop-shop-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minishop-user-collection/minishop-user-collection.iml" filepath="$PROJECT_DIR$/minishop-user-collection/minishop-user-collection.iml" />
+    </modules>
+  </component>
+</project>
